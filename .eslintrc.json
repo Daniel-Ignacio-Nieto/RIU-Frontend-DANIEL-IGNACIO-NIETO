@@ -1,0 +1,29 @@
+{
+  "root": true,
+  "ignorePatterns": ["dist", "node_modules"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@angular-eslint/recommended",
+        "plugin:prettier/recommended",
+        "prettier"
+      ],
+      "parserOptions": {
+        "project": ["tsconfig.json"],
+        "sourceType": "module"
+      },
+      "rules": {
+        "@angular-eslint/component-selector": ["error", { "type": "element", "prefix": "app", "style": "kebab-case" }],
+        "prettier/prettier": "error"
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {}
+    }
+  ]
+}
