@@ -1,6 +1,6 @@
 import { Hero } from '../models/hero.model';
 
-export const heroes: Hero[] = [
+export const SUPERHEROES: Hero[] = [
   {
     id: 1,
     name: 'Clark Kent',

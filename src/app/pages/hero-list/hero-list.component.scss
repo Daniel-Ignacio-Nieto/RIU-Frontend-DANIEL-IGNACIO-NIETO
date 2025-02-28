@@ -1,0 +1,18 @@
+.wrapper {
+  .headers {
+  }
+  .container {
+    .actions {
+    }
+    .list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      .hero {
+        max-width: 300px;
+      }
+    }
+    .paginator {
+    }
+  }
+}

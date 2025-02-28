@@ -1,1 +1,29 @@
-<p>hero works!</p>
+<main class="wrapper">
+  <section class="container">
+    <mat-card class="card" appearance="outlined">
+      <mat-card-header class="headers">
+        <mat-card-title>{{ dataHero.alias }}</mat-card-title>
+        <mat-card-subtitle>{{ dataHero.name }}</mat-card-subtitle>
+      </mat-card-header>
+      <div class="image">
+        <img mat-card-image [src]="dataHero.imgUrl" alt="Photo of Superheroe" />
+      </div>
+      <mat-card-footer class="chips">
+        <mat-chip-set aria-label="Chihuahua traits">
+          @for (pw of dataHero.power; track $index) {
+            <mat-chip>{{ pw }}</mat-chip>
+          }
+        </mat-chip-set>
+      </mat-card-footer>
+      <mat-card-content class="description">
+        <p>
+          {{ dataHero.description }}
+        </p>
+      </mat-card-content>
+      <mat-card-actions class="actions">
+        <button mat-button (click)="handleAction({ type: 'edit', id: dataHero.id! })">EDITAR</button>
+        <button mat-button (click)="handleAction({ type: 'delete', id: dataHero.id! })">BORRAR</button>
+      </mat-card-actions>
+    </mat-card>
+  </section>
+</main>

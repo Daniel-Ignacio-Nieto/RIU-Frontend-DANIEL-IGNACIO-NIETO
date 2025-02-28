@@ -1,1 +1,19 @@
-<p>hero-list works!</p>
+<main class="wrapper">
+  <section class="headers">
+    <h1>LISTA DE HEROES</h1>
+  </section>
+  <section class="container">
+    <div class="actions">
+      <div class="search">BUSCADOR</div>
+      <button mat-flat-button class="add" (click)="addHero()">AÑADIR</button>
+    </div>
+    <div class="list">
+      @for (hero of heroes$ | async; track hero.id) {
+        <div class="hero">
+          <app-hero [dataHero]="hero" (action)="handleHeroAction($event)"></app-hero>
+        </div>
+      }
+    </div>
+    <div class="paginator">PAGINADOR</div>
+  </section>
+</main>
