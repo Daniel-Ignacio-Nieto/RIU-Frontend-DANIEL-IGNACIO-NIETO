@@ -1,0 +1,27 @@
+# Node modules (no necesitamos copiar dependencias, se instalarán dentro del contenedor)
+node_modules
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+package-lock.json
+
+# Archivos de testing y configuración local
+coverage
+karma.conf.js
+jest.config.js
+tsconfig.spec.json
+
+# Configuración de Git (no necesitamos archivos de Git en Docker)
+.git
+.gitignore
+
+# Configuración de Docker (para evitar que Docker copie su propio archivo)
+.dockerignore
+Dockerfile
+
+# Archivos de logs y caché
+*.log
+.cache
+.vscode
+.idea
+.DS_Store

@@ -7,7 +7,10 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --watch=true --code-coverage",
-    "test:coverage": "npm run test"
+    "test:coverage": "npm run test",
+    "docker:build": "docker build -t super-heroes .",
+    "docker:run": "docker run -d -p 80:80 super-heroes",
+    "docker:start": "npm run docker:build && npm run docker:run && start http://localhost:80"
   },
   "private": true,
   "dependencies": {
