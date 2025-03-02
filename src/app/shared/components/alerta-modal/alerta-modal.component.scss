@@ -1,8 +1,66 @@
+@import '../../../../assets/styles/colors';
+
 .wrapper {
-  .container {
-    text-align: center;
-    .footer-actions {
-      justify-content: space-evenly;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.container {
+  background: $card-background;
+  border-radius: $border-radius;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  text-align: center;
+  color: $text-color;
+  width: 100%;
+  max-width: 400px;
+
+  h2 {
+    color: $primary-color;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  mat-dialog-content {
+    font-size: 1rem;
+    color: $subtitle-color;
+    margin-bottom: 15px;
+  }
+
+  .footer-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+
+    button {
+      flex: 1;
+      padding: 8px;
+      border-radius: $border-radius;
+      font-weight: bold;
+      transition:
+        background-color 0.3s ease,
+        transform 0.2s ease;
+
+      &:first-child {
+        background: $button-back;
+        color: $text-color;
+
+        &:hover {
+          background: darken($button-back, 10%);
+        }
+      }
+
+      &:last-child {
+        background: $error-color;
+        color: #fff;
+
+        &:hover {
+          background: darken($error-color, 10%);
+        }
+      }
     }
   }
 }

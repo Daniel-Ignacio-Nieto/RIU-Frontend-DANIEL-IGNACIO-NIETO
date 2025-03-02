@@ -1,18 +1,78 @@
+@import '../../../assets/styles/colors';
+
 .wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $background-color;
+  min-height: 100vh;
+
   .headers {
-  }
-  .container {
-    .actions {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    background-color: #232323;
+
+    h1 {
+      color: $text-color;
+      font-size: 2rem;
+      margin: 0;
     }
-    .list {
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+
+    .actions {
       display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      .hero {
-        max-width: 300px;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 20px;
+
+      .search {
+        flex: 1;
+        padding: 10px;
+        margin-right: 10px;
+        background-color: #333;
+        color: #fff;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        font-size: 1rem;
+      }
+
+      .add {
+        background-color: $button-background;
+        color: $button-text-color;
+        border-radius: 5px;
+        padding: 10px 15px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: darken($button-background, 10%);
+        }
       }
     }
+
+    .list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: $margin-gap;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
     .paginator {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      padding: 20px 0;
+      background-color: $background-color;
     }
   }
 }
