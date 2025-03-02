@@ -4,16 +4,28 @@
   </section>
   <section class="container">
     <div class="actions">
-      <div class="search">BUSCADOR</div>
+      <input class="search" type="text" placeholder="Buscar Héroes..." (input)="onSearch($event)" />
       <button mat-flat-button class="add" (click)="addHero()">AÑADIR</button>
     </div>
     <div class="list">
-      @for (hero of heroes$ | async; track hero.id) {
+      @for (hero of paginatedHeroes(); track hero.id) {
         <div class="hero">
           <app-hero [dataHero]="hero" (action)="handleHeroAction($event)"></app-hero>
         </div>
       }
     </div>
-    <div class="paginator">PAGINADOR</div>
+    <div class="paginator">
+      <mat-paginator
+        #paginator
+        class="demo-paginator"
+        (page)="handlePageEvent($event)"
+        [length]="heroes$().length"
+        [pageSizeOptions]="[5, 10, 25]"
+        [pageSize]="pageSize()"
+        [pageIndex]="pageIndex()"
+        [showFirstLastButtons]="true"
+        aria-label="Select page">
+      </mat-paginator>
+    </div>
   </section>
 </main>
