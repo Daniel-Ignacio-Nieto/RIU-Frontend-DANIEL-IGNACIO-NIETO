@@ -1,19 +1,20 @@
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { Hero } from '../models/hero.model';
 import { SUPERHEROES } from '../mocks/super-heroes';
+import { LoaderService } from './loader.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HeroService {
+  private readonly loaderService = inject(LoaderService);
+
   private heroesKey = 'heroes';
   public heroes$ = signal<Hero[]>(this.loadHeroes());
 
   // Tambien se puede hacer de esta otra forma para compartir el estado global:
   // private heroesSubject = new BehaviorSubject<Hero[]>(this.loadHeroes());
   // public heroes$ = this.heroesSubject.asObservable();
-
-  constructor() {}
 
   public initializeHeroes() {
     const storedHeroes = this.loadHeroes();
@@ -23,17 +24,18 @@ export class HeroService {
   }
 
   private updateStorageAndNotify(heroes: Hero[]) {
-    localStorage.setItem(this.heroesKey, JSON.stringify(heroes));
-    this.heroes$.set(heroes);
+    this.loaderService.show();
+
+    setTimeout(() => {
+      localStorage.setItem(this.heroesKey, JSON.stringify(heroes));
+      this.heroes$.set(heroes);
+      this.loaderService.hide();
+    }, 2000);
   }
 
   private loadHeroes(): Hero[] {
     const heroes = localStorage.getItem(this.heroesKey);
     return heroes ? JSON.parse(heroes) : [];
-  }
-
-  public saveHeroes(heroes: Hero[]): void {
-    localStorage.setItem(this.heroesKey, JSON.stringify(heroes));
   }
 
   getHeroById(id: number): Hero | undefined {
