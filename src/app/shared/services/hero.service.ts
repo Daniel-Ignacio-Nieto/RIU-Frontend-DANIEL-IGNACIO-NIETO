@@ -30,7 +30,7 @@ export class HeroService {
       localStorage.setItem(this.heroesKey, JSON.stringify(heroes));
       this.heroes$.set(heroes);
       this.loaderService.hide();
-    }, 2000);
+    }, 1000);
   }
 
   private loadHeroes(): Hero[] {
