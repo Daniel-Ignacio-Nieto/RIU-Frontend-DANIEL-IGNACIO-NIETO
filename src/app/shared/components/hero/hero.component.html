@@ -10,7 +10,7 @@
       </div>
       <mat-card-footer class="chips">
         <mat-chip-set aria-label="Chihuahua traits">
-          @for (pw of dataHero.power; track $index) {
+          @for (pw of dataHero.powers; track $index) {
             <mat-chip>{{ pw }}</mat-chip>
           }
         </mat-chip-set>
@@ -21,8 +21,8 @@
         </p>
       </mat-card-content>
       <mat-card-actions class="actions">
-        <button mat-button (click)="handleAction({ type: 'edit', id: dataHero.id! })">EDITAR</button>
-        <button mat-button (click)="handleAction({ type: 'delete', id: dataHero.id! })">BORRAR</button>
+        <button mat-button (click)="handleAction({ type: 'edit', heroe: dataHero })">EDITAR</button>
+        <button mat-button (click)="handleAction({ type: 'delete', heroe: dataHero })">BORRAR</button>
       </mat-card-actions>
     </mat-card>
   </section>
