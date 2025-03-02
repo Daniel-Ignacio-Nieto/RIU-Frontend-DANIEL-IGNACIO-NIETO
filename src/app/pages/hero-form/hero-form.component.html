@@ -1,1 +1,63 @@
-<p>hero-form works!</p>
+<main class="wrapper">
+  <section class="form-container">
+    <form [formGroup]="heroForm" class="form" (ngSubmit)="saveHero()">
+      <section class="headers">
+        <h1 class="title">FORMULARIO</h1>
+        <h3 class="subtitle">Aqui podras Crear o Editar un Superheroe!!</h3>
+      </section>
+      <div class="row tag">
+        <div class="field">
+          <mat-form-field appearance="outline">
+            <mat-label class="label" for="alias">Alias</mat-label>
+            <input
+              matInput
+              id="alias"
+              placeholder="ej: Superman"
+              [value]="heroForm.get('alias')?.value | uppercase"
+              formControlName="alias" />
+            <mat-error>Solo letras, min 3 - max 25</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="field">
+          <mat-form-field appearance="outline">
+            <mat-label class="label" for="name">Nombre Real</mat-label>
+            <input matInput id="name" placeholder="ej: Clark Kent" formControlName="name" />
+            <mat-error>Solo letras, min 3 - max 25</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <mat-form-field appearance="outline">
+            <mat-label class="label" for="description">Descripción</mat-label>
+            <textarea matInput id="description" placeholder="ej: Lleva una doble vida..." formControlName="description"></textarea>
+            <mat-error>Min 10 - max 200</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <mat-form-field appearance="outline">
+            <mat-label class="label" for="powers">Poderes</mat-label>
+            <input matInput id="powers" placeholder="ej: Vision Rayos X, Super Fuerza..." formControlName="powers" />
+            <mat-error>Solo letras, separe poderes con coma( , )</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <mat-form-field appearance="outline">
+            <mat-label class="label" for="imgUrl">Imagen URL</mat-label>
+            <input matInput id="imgUrl" placeholder="ej: https://www.ejimg.com/man.jpg" formControlName="imgUrl" />
+            <mat-error>Formato invalido</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="footer-actions">
+        <button mat-flat-button class="back" [routerLink]="['/heroes']" routerLinkActive="router-link-active">VOLVER</button>
+        <button mat-flat-button class="add" type="submit" [disabled]="heroForm.invalid">{{ heroId ? 'EDITAR' : 'AÑADIR' }}</button>
+      </div>
+    </form>
+  </section>
+</main>
