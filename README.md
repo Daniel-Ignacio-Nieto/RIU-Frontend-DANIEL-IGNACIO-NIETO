@@ -1,27 +1,44 @@
-# SuperHeroes
+# **RIU Front-End DANIEL IGNACIO NIETO**
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.14.
+_“Aplicación de gestión (CRUD) de superhéroes donde los usuarios pueden agregar, actualizar, eliminar y visualizar héroes en una lista. El proyecto incluye pruebas unitarias y funcionales, así como una arquitectura modular basada en Angular 18.2.0”_
 
-## Development server
+## **Tecnologías utilizadas**
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Lista de las tecnologías, lenguajes y herramientas que has usado para el desarrollo:
 
-## Code scaffolding
+- **Frontend**: Angular 18, TypeScript, RxJS
+- **Estilos**: SCSS, Angular Material
+- **Gestión de estado**: Signals
+- **Testing**: Jasmine, Karma, FakeAsync, TestBed
+- **Otros**: LocalStorage, Router de Angular, Forms Reactivos, entre otros.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+### Explicación de la estructura:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. **Título y descripción**:
 
-## Running unit tests
+   - Un título claro y una breve descripción del proyecto.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2. **Requisitos previos**:
 
-## Running end-to-end tests
+   - Lista de herramientas necesarias para ejecutar el proyecto (Node.js, Angular CLI, Docker).
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+3. **Instalación**:
 
-## Further help
+   - git clone 'https://github.com/Daniel-Ignacio-Nieto/super-heroes.git'
+   - cd super-heroes
+   - npm install (instalamos dependencias)
+   - npm start / ng serve (corremos el repo local)
+   - abrir 'http://localhost:4200' en el navegador
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+4. **Ejecución con Docker**:
+
+   - Hice unos scripts para facilitar la creacion del contenedor y la ejecucion del mismo
+
+   - npm docker:start esto construye el contenedor, lo ejecuta, y abre el puerto donde se esta ejecutando 'http://localhost:80'
+
+5. **Licencia**:
+   - MIT
+
+---
