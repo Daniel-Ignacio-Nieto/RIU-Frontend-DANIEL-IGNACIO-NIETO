@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { HeroService } from '../../shared/services/hero.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Hero } from '../../shared/models/hero.model';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-hero-form',
@@ -20,6 +21,7 @@ export class HeroFormComponent implements OnInit {
   private readonly heroService = inject(HeroService);
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
+  private readonly destroyRef = inject(DestroyRef);
 
   public heroForm!: FormGroup;
   public heroId: number | null = null;
@@ -46,10 +48,12 @@ export class HeroFormComponent implements OnInit {
   }
 
   private isEdit(): void {
-    this.route.queryParams.subscribe((params) => {
+    this.route.queryParams.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((params) => {
       if (params['id']) {
         this.heroId = Number(params['id']);
         this.loadHeroData(this.heroId);
+      } else {
+        this.heroId = null;
       }
     });
   }
@@ -81,11 +85,7 @@ export class HeroFormComponent implements OnInit {
   }
 
   private formatPowers(powers: string): string[] {
-    return powers
-      ? powers
-          .split(',')
-          .map((power: string) => power.trim())
-          .filter((power: string) => power.length > 0)
-      : [];
+    const powersArray = Array.isArray(powers) ? powers : powers.split(',');
+    return powersArray.map((power: string) => power.trim()).filter((power: string) => power.length > 0);
   }
 }
