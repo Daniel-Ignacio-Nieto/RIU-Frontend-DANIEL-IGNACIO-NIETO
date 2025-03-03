@@ -26,8 +26,8 @@ Lista de las tecnologías, lenguajes y herramientas que has usado para el desarr
 
 3. **Instalación**:
 
-   - git clone 'https://github.com/Daniel-Ignacio-Nieto/super-heroes.git'
-   - cd super-heroes
+   - git clone 'https://github.com/Daniel-Ignacio-Nieto/RIU-Frontend-DANIEL-IGNACIO-NIETO.git'
+   - cd RIU-Frontend-DANIEL-IGNACIO-NIETO
    - npm install (instalamos dependencias)
    - npm start / ng serve (corremos el repo local)
    - abrir 'http://localhost:4200' en el navegador
