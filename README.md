@@ -29,14 +29,14 @@ Lista de las tecnologías, lenguajes y herramientas que has usado para el desarr
    - git clone 'https://github.com/Daniel-Ignacio-Nieto/RIU-Frontend-DANIEL-IGNACIO-NIETO.git'
    - cd RIU-Frontend-DANIEL-IGNACIO-NIETO
    - npm install (instalamos dependencias)
-   - npm start / ng serve (corremos el repo local)
+   - npm run start / ng serve (corremos el repo local)
    - abrir 'http://localhost:4200' en el navegador
 
 4. **Ejecución con Docker**:
 
    - Hice unos scripts para facilitar la creacion del contenedor y la ejecucion del mismo
 
-   - npm docker:start esto construye el contenedor, lo ejecuta, y abre el puerto donde se esta ejecutando 'http://localhost:80'
+   - npm run docker:start esto construye el contenedor, lo ejecuta, y abre el puerto donde se esta ejecutando 'http://localhost:80'
 
 5. **Licencia**:
    - MIT
