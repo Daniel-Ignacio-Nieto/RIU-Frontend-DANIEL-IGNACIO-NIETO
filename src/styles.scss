@@ -8,3 +8,10 @@ body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
+
+// Estilos del spinner isLoading overlay ////
+.cdk-overlay-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

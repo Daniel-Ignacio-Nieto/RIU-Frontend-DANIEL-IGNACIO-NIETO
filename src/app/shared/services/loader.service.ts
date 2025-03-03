@@ -15,7 +15,7 @@ export class LoaderService {
     if (!this.overlayRef) {
       this.overlayRef = this.overlay.create({
         hasBackdrop: true,
-        positionStrategy: this.overlay.position().global().centerHorizontally().centerVertically(),
+        backdropClass: 'cdk-overlay-dark-backdrop',
       });
 
       const loaderPortal = new ComponentPortal(SpinnerComponent);
