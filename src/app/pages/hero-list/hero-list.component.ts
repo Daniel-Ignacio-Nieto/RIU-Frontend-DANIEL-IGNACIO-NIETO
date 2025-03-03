@@ -31,14 +31,11 @@ export class HeroListComponent {
     this.heroes$ = this.heroService.heroes$;
   }
 
-  ngOnInit(): void {}
-
   addHero(): void {
     this.router.navigate(['/heroes/form']);
   }
 
   editHero(id: number): void {
-    console.log('paso por el edit');
     this.router.navigate(['/heroes/form'], { queryParams: { id } });
   }
 
@@ -61,8 +58,6 @@ export class HeroListComponent {
         break;
       case 'delete':
         this.deleteHero(event.heroe);
-        break;
-      default:
         break;
     }
   }
