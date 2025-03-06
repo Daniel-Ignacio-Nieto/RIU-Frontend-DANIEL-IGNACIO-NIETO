@@ -43,4 +43,13 @@ describe('HeroComponent', () => {
 
     expect(spy1).toHaveBeenCalledWith(action);
   });
+
+  it('should set safe image when image fails to load', () => {
+    const imgElement = document.createElement('img');
+    imgElement.src = 'https://invalid-url.com/image.jpg';
+
+    component.onImageError({ target: imgElement } as unknown as Event);
+
+    expect(imgElement.src).toContain('assets/images/incognito-persona.jpg');
+  });
 });

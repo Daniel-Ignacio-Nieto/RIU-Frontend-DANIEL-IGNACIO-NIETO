@@ -6,7 +6,7 @@
         <mat-card-subtitle>{{ dataHero.name }}</mat-card-subtitle>
       </mat-card-header>
       <div class="image">
-        <img mat-card-image [src]="dataHero.imgUrl" alt="Photo of Superheroe" />
+        <img mat-card-image [src]="dataHero.imgUrl" alt="Photo of Superheroe" (error)="onImageError($event)" />
       </div>
       <mat-card-footer class="chips">
         <mat-chip-set aria-label="Chihuahua traits">

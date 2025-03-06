@@ -17,7 +17,13 @@ export class HeroComponent {
   @Input() dataHero!: Hero;
   @Output() action = new EventEmitter<HeroActions>();
 
+  public safeImage: string = 'assets/images/incognito-persona.jpg';
+
   public handleAction(dataType: HeroActions): void {
     this.action.emit(dataType);
+  }
+
+  onImageError(event: Event) {
+    (event.target as HTMLImageElement).src = this.safeImage;
   }
 }
