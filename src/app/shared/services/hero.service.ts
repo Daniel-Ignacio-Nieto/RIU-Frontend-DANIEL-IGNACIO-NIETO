@@ -1,4 +1,4 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { inject, Injectable, Signal, signal } from '@angular/core';
 import { Hero } from '../models/hero.model';
 import { SUPERHEROES } from '../mocks/super-heroes';
 import { LoaderService } from './loader.service';
@@ -11,6 +11,7 @@ export class HeroService {
 
   private heroesKey = 'heroes';
   public heroes$ = signal<Hero[]>(this.loadHeroes());
+  public hasNewHero = signal<boolean>(false);
 
   // Tambien se puede hacer de esta otra forma para compartir el estado global:
   // private heroesSubject = new BehaviorSubject<Hero[]>(this.loadHeroes());
@@ -48,6 +49,8 @@ export class HeroService {
 
   addHero(hero: Hero): void {
     const heroes = this.loadHeroes();
+    this.hasNewHero.set(true);
+
     heroes.push(hero);
     this.updateStorageAndNotify(heroes);
   }

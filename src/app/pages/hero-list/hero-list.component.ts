@@ -1,4 +1,4 @@
-import { Component, computed, signal, Signal } from '@angular/core';
+import { Component, computed, effect, OnInit, signal, Signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
@@ -17,7 +17,7 @@ import { AlertaModalComponent } from '../../shared/components/alerta-modal/alert
   templateUrl: './hero-list.component.html',
   styleUrl: './hero-list.component.scss',
 })
-export class HeroListComponent {
+export class HeroListComponent implements OnInit {
   public readonly heroes$!: Signal<Hero[]>;
   public pageIndex = signal<number>(0);
   public pageSize = signal<number>(10);
@@ -29,6 +29,13 @@ export class HeroListComponent {
     private readonly dialog: MatDialog
   ) {
     this.heroes$ = this.heroService.heroes$;
+  }
+
+  ngOnInit(): void {
+    // se agrega el temporizador porque los heroes se actualizan con un tiempo de simulacion de Request
+    setTimeout(() => {
+      this.goLastPage();
+    }, 1000);
   }
 
   addHero(): void {
@@ -59,6 +66,13 @@ export class HeroListComponent {
       case 'delete':
         this.deleteHero(event.heroe);
         break;
+    }
+  }
+
+  goLastPage(): void {
+    if (this.heroService.hasNewHero()) {
+      this.pageIndex.set(Math.ceil(this.heroes$().length / this.pageSize()) - 1);
+      this.heroService.hasNewHero.set(false);
     }
   }
 

@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { HeroListComponent } from './hero-list.component';
 import { HeroService } from '../../shared/services/hero.service';
 import { Router } from '@angular/router';
@@ -23,11 +23,13 @@ describe('HeroListComponent', () => {
 
   const mockHeroes: Hero[] = SUPERHEROES;
   const mockHeroesSignal = signal(mockHeroes);
+  const mockHasNewHeroSignal = signal(false);
 
   beforeEach(async () => {
     mockHeroService = {
       ...jasmine.createSpyObj('HeroService', ['deleteHero']),
       heroes$: mockHeroesSignal,
+      hasNewHero: mockHasNewHeroSignal,
     };
     mockRouter = jasmine.createSpyObj('Router', ['navigate']);
     mockDialog = jasmine.createSpyObj('MatDialog', ['open']);
@@ -53,6 +55,22 @@ describe('HeroListComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should await 1sg to call goLastPage()', fakeAsync(() => {
+    let spy1 = spyOn(component, 'goLastPage');
+    component.ngOnInit();
+    tick(1000);
+    expect(spy1).toHaveBeenCalled();
+  }));
+
+  it('should update pageIndex() to last page when goLastPage() is called and hasNewHero() is true', () => {
+    mockHeroService.hasNewHero.set(true);
+    component.goLastPage();
+
+    const lastPageIndex = Math.ceil(mockHeroes.length / component.pageSize()) - 1;
+    expect(component.pageIndex()).toBe(lastPageIndex);
+    expect(mockHeroService.hasNewHero()).toBeFalse();
   });
 
   it('should navigate to /heroes/form when addHero() is called', () => {
