@@ -9,12 +9,7 @@
         <div class="field">
           <mat-form-field appearance="outline">
             <mat-label class="label" for="alias">Alias</mat-label>
-            <input
-              matInput
-              id="alias"
-              placeholder="ej: Superman"
-              [value]="heroForm.get('alias')?.value | uppercase"
-              formControlName="alias" />
+            <input appUppercase matInput id="alias" placeholder="ej: Superman" formControlName="alias" />
             <mat-error>Solo letras, min 3 - max 25</mat-error>
           </mat-form-field>
         </div>

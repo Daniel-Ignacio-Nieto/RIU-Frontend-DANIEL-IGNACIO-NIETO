@@ -8,11 +8,12 @@ import { HeroService } from '../../shared/services/hero.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Hero } from '../../shared/models/hero.model';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { UppercaseDirective } from '../../shared/directives/uppercase.directive';
 
 @Component({
   selector: 'app-hero-form',
   standalone: true,
-  imports: [CommonModule, RouterModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, UppercaseDirective],
   templateUrl: './hero-form.component.html',
   styleUrl: './hero-form.component.scss',
 })
